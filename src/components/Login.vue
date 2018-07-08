@@ -46,7 +46,6 @@ export default {
       } else {
           console.log(response.data.token)
       }
-//      if token present push user to usersList page
       if (token) {
         this.$router.push({ name: 'usersList' })
       }
@@ -60,7 +59,6 @@ export default {
 </script>
 
 <style scoped>
-
 .login-wrapper {
   background: #fff;
   width: 70%;
@@ -85,17 +83,10 @@ export default {
   padding: 10px;
   font-size: 16px;
 }
-.form-signin .form-control:focus {
-  z-index: 2;
-}
 .form-signin input[type="email"] {
   margin-bottom: 10px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
   margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 </style>

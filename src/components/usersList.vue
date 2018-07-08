@@ -43,7 +43,6 @@ export default {
   name: 'usersList',
   data () {
     return {
-      errors: [],
       users:[],
       firstName:'',
       lastName:'',
@@ -74,7 +73,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
   p {
     margin:0;
@@ -124,5 +122,4 @@ export default {
     border:1px solid lightgray;
     border-radius:3px;
   }
-
 </style>
