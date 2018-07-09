@@ -12,7 +12,6 @@
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Avatar</th>
-          <th scope="col">Edit</th>
           <th scope="col">Delete</th>
         </tr>
         </thead>
@@ -22,7 +21,6 @@
           <td>{{ user.first_name }}</td>
           <td>{{ user.last_name }}</td>
           <td><img ﻿v-bind="{src:user.avatar}" alt=""></td>
-          <td><button>Edit</button></td>
           <td >x</td>
         </tr>
         </tbody>
