@@ -16,12 +16,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="user in users" @click="removeUser(user)">
+        <tr v-for="user in users">
           <td>{{ user.id }}</td>
           <td>{{ user.first_name }}</td>
           <td>{{ user.last_name }}</td>
           <td><img ﻿v-bind="{src:user.avatar}" alt=""></td>
-          <td >x</td>
+          <td @click="removeUser(user)">x</td>
         </tr>
         </tbody>
       </table>

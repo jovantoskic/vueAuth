@@ -29,7 +29,7 @@
       </form>
       <div class="newUser">
         <div>
-          <p>{{message}}</p>
+          <p class="message">{{message}}</p>
         </div>
         <div>
           <p>First Name:</p>
@@ -128,6 +128,9 @@
   .newUser p {
     margin:0;
     padding:0;
+  }
+  .message {
+    font-size:1.1rem;
   }
   .newUser div:first-child {
     width:100%;
