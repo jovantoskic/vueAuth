@@ -2,7 +2,7 @@
   <div class="createUser">
     <MenuComponent></MenuComponent>
     <div class="createUserForm">
-      <form class="form-signin">
+      <form class="form-signin" @submit.prevent="submit">
         <h2 class="form-signin-heading">Create user</h2>
 
         <div class="firstName">
@@ -22,7 +22,8 @@
 
         <div class="phoneNumber">
           <label for="inputPhoneNumber" class="sr-only">Phone Number</label>
-          <input v-model="phoneNumber" type="number" id="inputPhoneNumber" class="form-control" placeholder="Phone Number" required>
+          <input v-model="phoneNumber"  type="number" id="inputPhoneNumber" class="form-control" placeholder="Phone Number" required>
+          <p v-if="phoneNumber.length > 10">Phone number can't be bigger then 10 digits</p>
         </div>
 
         <flat-pickr v-model="date"></flat-pickr>
@@ -33,27 +34,31 @@
         </div>
         <div>
           <p>First Name:</p>
-          <p>{{firstName}}</p>
+          <p>{{ firstName }}</p>
         </div>
         <div>
           <p>Last Name:</p>
-          <p>{{lastName}}</p>
+          <p>{{ lastName }}</p>
         </div>
         <div>
           <p>Email:</p>
-          <p>{{email}}</p>
+          <p>{{ email }}</p>
         </div>
         <div>
           <p>Phone Number:</p>
-          <p>{{phoneNumber}}</p>
+          <p>{{ phoneNumber }}</p>
         </div>
         <div>
           <p>Date:</p>
-          <p>{{date}}</p>
+          <p>{{ date }}</p>
+        </div>
+        <div>
+          <p>Created at:</p>
+          <p>{{ created }}</p>
         </div>
       </div>
     </div>
-  <button @click="createUser">Create user</button>
+  <button class="btn btn-primary" type="submit" @click="createUser">Create user</button>
   </div>
 </template>
 
@@ -68,12 +73,13 @@
       return {
         message:'',
         users:[],
+        errors:[],
         firstName: '',
         lastName: '',
         email: '',
         phoneNumber: '',
-        date:null,
-        errors:[],
+        created:'',
+        date:null
       }
     },
     components: {
@@ -95,9 +101,10 @@
             this.email = response.data.email;
             this.phoneNumber = response.data.phoneNumber;
             this.date = response.data.date;
-            if(response) {
-                this.message = 'New user with fallowing credentials created';
-            }
+            this.created = response.data.createdAt;
+//            if(this.firstName !== "") {
+//                this.message = 'New user with fallowing credentials created';
+//            }
           })
           .catch((err) => {
             this.errors = err;

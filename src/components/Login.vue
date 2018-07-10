@@ -21,6 +21,8 @@
 </template>
 
 <script>
+  /* eslint-disable */
+import storage from '../storage';
 export default {
   name: 'Login',
   data () {
@@ -38,20 +40,14 @@ export default {
         .catch(() => this.loginFailed())
     },
     loginSuccessful (response) {
-      localStorage.setItem('user-token', response.data.token);
-      let token = localStorage.getItem('user-token');
-
-      if (!response.data.token) {
-        this.loginFailed()
-      } else {
-          console.log(response.data.token)
-      }
-      if (token) {
-        this.$router.push({ name: 'usersList' })
-      }
+      let responseToken = response.data.token;
+      storage.put('user-token',responseToken).then((value) => {
+        console.log(value);
+        value ? this.$router.push({ name: 'usersList'}) : this.loginFailed();
+      })
     },
     loginFailed () {
-      this.error = 'Login failed!'
+      this.error = 'Login failed!';
       delete localStorage.token
     }
   }

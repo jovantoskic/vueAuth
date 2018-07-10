@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import axios from './backend/vue-axios'
+import axios from './vue-axios'
 import { beforeEachHook } from './router/beforeEach'
 
 Vue.config.productionTip = false
