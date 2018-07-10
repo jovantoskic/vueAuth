@@ -16,5 +16,9 @@ export default {
   body {
     font-family:'Open Sans', sans-serif;
   }
+  p {
+    margin:0;
+    padding:0;
+  }
 
 </style>
